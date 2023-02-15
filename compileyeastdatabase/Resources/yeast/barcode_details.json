@@ -1,0 +1,37 @@
+{
+    "r1": {
+        "primer": {"trim": true, 
+                   "index": [0,5]},
+    
+        "transposon": {"trim": true, 
+                       "index": [5,22]}
+    },
+    "r2": {
+        "transposon": {"trim": true, 
+                       "index":[0,8]},
+                          
+        "restriction": {"trim": true, 
+                        "index": [8,20]}
+    },
+    "components": {
+        "r1_transposon":  {"map":["AATTCACTACGTCAACA"],
+                           "bam_tag": "RT"},
+        "r2_restriction": {"map": {"TCGAGCGCCCGG":"Hpall",
+                                   "TCGAGCGC":"HinP1I",
+                                   "TCGA":"TaqAI"},
+                           "match_type": "greedy",
+                           "require": false,
+                           "bam_tag": "RS"},
+        "tf":             {"components": ["r1_primer", "r2_transposon"],
+                           "map": {"TGATAACCTGTTT":"RIM101", 
+                                   "TACTCCAGAGGGG":"RTG1",
+                                   "CCTGCACGCACGC":"ERT1", 
+                                   "TCGTCTACGGCGT":"MTH1",
+                                   "AACGCTTTTTCTA":"MET32"},
+                           "bam_tag": "TF"}
+    },
+    "match_allowance": {
+        "r1_transposon": 0
+    },
+    "batch": "run_1234"
+}
